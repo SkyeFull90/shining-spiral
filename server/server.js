@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 //const path = require('path');
 const app = express();
-const connectDB = require('./config/connectDB')
 const catRoutes = require('./routes/catRoutes');
 const userRoutes = require('./routes/userRoutes');
 const mongoose = require('mongoose')
@@ -10,6 +9,7 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/userModel'); // use the path to your User model
+const connectDB = require('./connectDB');
 
 const PORT = process.env.PORT || 3000
 
