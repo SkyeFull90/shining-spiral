@@ -1,9 +1,11 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose')
 
-async function config() {
+const config = async () => {
     try {
-        await mongoose.connect(process.env.DATABASE_URI)
+        await mongoose.connect(process.env.DATBASE_URI)
     } catch (err) {
         console.log(err)
     }
 }
+
+module.exports = config

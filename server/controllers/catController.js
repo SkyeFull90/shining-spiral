@@ -1,6 +1,5 @@
-
-const Cat = reqiure('../models/catModel.js')
-const Cloudinary = require('cloudinary').v2
+const Cat = require('../models/catModel')
+const cloudinary = require('cloudinary').v2
 const multer = require('multer');
 
 require('dotenv').config();
@@ -23,14 +22,16 @@ const getCat = (req, res) => {
 const getAllCats = async (req, res) => {
   try {
     const cats = await Cat.find().populate('owner');
-    
+    res.json(cats)
   } catch (err) {
-    
+    console.error(err);
+    res.status(500).send('Server Error')
   }
 } 
 
 
 module.exports = {
     getKitten,
-    getCat
+    getCat,
+    getAllCats
 }
