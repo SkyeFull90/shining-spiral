@@ -1,5 +1,5 @@
-/*
-const Cat = reqiure(''../models/catModel.js)
+
+const Cat = reqiure('../models/catModel.js')
 const Cloudinary = require('cloudinary').v2
 const multer = require('multer');
 
@@ -11,7 +11,7 @@ cloudinary.config({
 });
 
 const upload = multer({ dest: './public/images' });
-*/
+
 const getKitten = (req, res) => {
   res.send([{"Hello": "World"}])
 }
@@ -19,6 +19,15 @@ const getKitten = (req, res) => {
 const getCat = (req, res) => {
     res.send([{"Hello world": "From the api"}])
 }
+
+const getAllCats = async (req, res) => {
+  try {
+    const cats = await Cat.find().populate('owner');
+    
+  } catch (err) {
+    
+  }
+} 
 
 
 module.exports = {
