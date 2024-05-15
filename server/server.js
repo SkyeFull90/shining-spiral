@@ -1,22 +1,10 @@
-import dotenv from "dotenv"
-import express from "express"
-import app from "express"
-import config from "./config.js"
-import mongoose from "mongoose"
-/*
- import catRoutes from "./routes/catRoute.js"
- import userRoutes from "./routes/userRoute.js"
- import passport from "passport"
- import {Strategy as LocalStrategy} from "passport-local"
- import User from "./models/userModel.js"
-*/ 
-dotenv.config();
-const port = process.env.PORT || 3000
-config()
-//app.use(express.static('dist'))
+const express = require('express');
+const catRoutes =require('./routes/catRoutes')
+const app = express();
+//app.use(express.Static('dist'))
+app.use('/', catRoutes);
 
-app.use(express.urlencoded({ extended: true}))
-
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Listening on port http://localhost:${port}`)
-})
+});
